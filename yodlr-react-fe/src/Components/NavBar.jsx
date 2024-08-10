@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SignIntersectionY, SignIntersectionYFill } from 'react-bootstrap-icons';
 
-const NavBar = () => {
+const NavBar = ({theme='light'}) => {
     //NavBar component for admins
     const [authStatus, setAuthStatus] = useState(false) 
 
