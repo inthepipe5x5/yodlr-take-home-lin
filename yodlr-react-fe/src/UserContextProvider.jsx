@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {
     useState,
     useMemo,
@@ -5,9 +6,8 @@ import React, {
     createContext,
     useEffect,
   } from "react";
-  import YodlrApi from "./api.js";
-  import useLocalStorage from "./useLocalStorage.jsx";
-  import { retrieveStoredPrevUser } from "./helper.js";
+import YodlrApi from "../../lib/api.js";
+  import useLocalStorage, {retrieveStoredPrevUser} from "../src/Hooks/useLocalStorage.jsx";
   
   const UserContext = createContext({
     currentUser: retrieveStoredPrevUser(),
