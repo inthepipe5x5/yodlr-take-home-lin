@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Button, Input } from "reactstrap";
+import { Form, FormGroup, Label, Button, Input, Row, Col } from "reactstrap";
 import YodlrApi from "../../../lib/api";
 
 const defaultSignUpState = {
+  email: "",
   firstName: "",
   lastName: "",
   username: "",
@@ -52,7 +53,7 @@ const SignUpForm = () => {
         <Label for="LastName">Last Name</Label>
         <Input
           type="text"
-          name="LastName"
+          name="lastName"
           id="LastName"
           placeholder="Enter your last name"
         value={inputData.lastName}

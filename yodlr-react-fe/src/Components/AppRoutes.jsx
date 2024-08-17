@@ -26,14 +26,9 @@ AppRoutes => React Routes component to make this an SPA
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <LandingPage content={LandingPageContent}/>
-        }
-      />
-      <Route path="/admin" element={AdminPage} />
-      <Route path="/signup" element={<FormPage childForm={SignUpForm} />} />
+      <Route path="/" element={<LandingPage content={LandingPageContent} />} />
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/signup" element={<SignUpForm childForm={SignUpForm} />} />
       <Route path="/login" element={<FormPage childForm={LoginForm} />} />
       <Route
         path="/logout"
@@ -47,9 +42,9 @@ const AppRoutes = () => {
       <Route
         path="/users/:username/edit"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <FormPage childAuthForm={EditUserForm} />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         }
       />
       <Route

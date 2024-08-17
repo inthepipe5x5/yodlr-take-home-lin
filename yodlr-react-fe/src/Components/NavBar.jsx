@@ -3,8 +3,8 @@ import { Nav, NavbarBrand, NavItem, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
 import Yodlr from "../assets/Yodlr.png";
 const NavBar = () => {
-  const [authStatus, setAuthStatus] = useState(false); // Example auth status
-
+  const [authStatus, setAuthStatus] = useState(true); // Example auth status
+  
   return (
     <div className="p-3 bg-white" style={{ width: "280px" }}>
       <Nav vertical>
@@ -17,7 +17,7 @@ const NavBar = () => {
         {authStatus ? (
           <>
             <NavItem>
-              <NavLink tag={Link} to="/admin-dash">Admin Dash</NavLink>
+              <NavLink tag={Link} to="/admin">Admin Dash</NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link} to="/logout">Logout</NavLink>
