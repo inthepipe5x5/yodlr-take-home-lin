@@ -23,7 +23,7 @@ const SignUpForm = () => {
     evt.preventDefault();
     YodlrApi.registerNewUser(inputData);
   };
-  
+
   return (
     <Form>
       <FormGroup floating>
@@ -33,6 +33,8 @@ const SignUpForm = () => {
           name="email"
           id="Email"
           placeholder="Enter your email"
+        value={inputData.email}
+        onChange={handleInput}
         />
       </FormGroup>
       <FormGroup floating>
@@ -42,6 +44,8 @@ const SignUpForm = () => {
           name="firstName"
           id="firstName"
           placeholder="Enter your first name"
+        value={inputData.firstName}
+        onChange={handleInput}
         />
       </FormGroup>
       <FormGroup floating>
@@ -51,6 +55,8 @@ const SignUpForm = () => {
           name="LastName"
           id="LastName"
           placeholder="Enter your last name"
+        value={inputData.lastName}
+        onChange={handleInput}
         />
       </FormGroup>
 
@@ -61,6 +67,8 @@ const SignUpForm = () => {
           name="password"
           id="Password"
           placeholder="Enter your password"
+          value={inputData.password}
+          onChange={handleInput}
         />
       </FormGroup>
       <Button type="submit" onClick={handleSubmit}>

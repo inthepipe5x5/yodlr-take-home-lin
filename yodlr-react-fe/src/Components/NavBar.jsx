@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavbarBrand, NavItem, NavLink } from "reactstrap";
+import { Link } from "react-router-dom";
 import Yodlr from "../assets/Yodlr.png";
-
 const NavBar = () => {
   const [authStatus, setAuthStatus] = useState(false); // Example auth status
 
@@ -9,27 +9,27 @@ const NavBar = () => {
     <div className="p-3 bg-white" style={{ width: "280px" }}>
       <Nav vertical>
         <NavItem>
-          <NavLink href="/">
+          <NavbarBrand tag={Link} to="/">
             <img src={Yodlr} alt="Yodlr Logo" style={{ width: "32px" }} />
             <span className="fs-5 fw-semibold">Yodlr</span>
-          </NavLink>
+          </NavbarBrand>
         </NavItem>
         {authStatus ? (
           <>
             <NavItem>
-              <NavLink href="/admin-dash">Admin Dash</NavLink>
+              <NavLink tag={Link} to="/admin-dash">Admin Dash</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/logout">Logout</NavLink>
+              <NavLink tag={Link} to="/logout">Logout</NavLink>
             </NavItem>
           </>
         ) : (
           <>
             <NavItem>
-              <NavLink href="/signup">Sign Up</NavLink>
+              <NavLink tag={Link} to="/signup">Sign Up</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <NavLink tag={Link} to="/login">Login</NavLink>
             </NavItem>
           </>
         )}

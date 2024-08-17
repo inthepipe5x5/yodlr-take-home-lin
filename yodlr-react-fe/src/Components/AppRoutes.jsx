@@ -14,7 +14,6 @@ import SignUpForm from "./SignUpForm";
 import EditUserForm from "./EditUserForm";
 import UserCard from "./UserCard";
 import LandingPageContent from "./LandingPageContent";
-import DashLayout from "../Layouts/DashLayout";
 
 /*
 AppRoutes => React Routes component to make this an SPA
@@ -34,10 +33,10 @@ const AppRoutes = () => {
         }
       />
       <Route path="/admin" element={AdminPage} />
-      <Route path="/signup" element={<FormPage ChildForm={SignUpForm} />} />
-      <Route path="/login" element={<FormPage ChildForm={LoginForm} />} />
+      <Route path="/signup" element={<FormPage childForm={SignUpForm} />} />
+      <Route path="/login" element={<FormPage childForm={LoginForm} />} />
       <Route
-        path="logout"
+        path="/logout"
         element={
           <>
             <Alert color="success">Log Out Successful!</Alert>
@@ -49,7 +48,7 @@ const AppRoutes = () => {
         path="/users/:username/edit"
         element={
           <ProtectedRoute>
-            <FormPage ChildAuthForm={EditUserForm} />
+            <FormPage childAuthForm={EditUserForm} />
           </ProtectedRoute>
         }
       />
