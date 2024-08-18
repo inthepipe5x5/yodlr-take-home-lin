@@ -72,7 +72,11 @@ const AppRoutes = () => {
         }
       />
       <Route path="/profile" element={<UserCard />} />
-      <Route path="/NotFound" element={<NotFound />} />
+      <Route path="/NotFound" element={ <LandingPage
+            bannerTitle={"No User Found"}
+            bannerSubtitle={"User Not Found"}
+            content={<NotFound />}
+          />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

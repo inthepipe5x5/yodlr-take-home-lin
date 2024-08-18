@@ -30,7 +30,7 @@ const UserCard = () => {
     id: userId || "",
   });
   const { firstName, lastName, email, state } = userDetails;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAllData = async () => {
@@ -38,7 +38,11 @@ const UserCard = () => {
         const resp = await YodlrApi.getUser(id);
         const userData = resp.data;
         console.debug(userData);
-        setUserDetails(userData);
+        if (resp.status !== 200) {
+          navigate("/NotFound");
+        } else {
+          setUserDetails(userData);
+        }
       } catch (error) {
         console.error(error);
       } finally {
