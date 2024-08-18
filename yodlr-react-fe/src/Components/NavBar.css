@@ -8,7 +8,8 @@
     color: whitesmoke;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
   }
-  
-  .content {
-    margin-top: 60px; /* Adjust this value to the height of your navbar */
+
+  .navbar-brand-text {
+    color: #ffffff !important;
   }
+  

@@ -1,15 +1,14 @@
-// LandingPageContent.js
+// Banner.js
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Button } from "reactstrap";
+import { Container, Button, Row, Col } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 
-const LandingPageContent = ({
-  title = "Welcome Yodlr Admin!",
-  subtitle = "We are glad to have you here.",
-  buttonText = "Get Started",
-  buttonLink = "/",
+
+const Banner = ({
+  title = "Yodlr",
+  subtitle = "Where yodelling meets admin",
   backgroundColor = "#f8f9fa", // Default Bootstrap Jumbotron background
   textColor = "#000", // Default text color
 }) => {
@@ -25,28 +24,24 @@ const LandingPageContent = ({
 
   return (
     <Container fluid style={bannerStyle}>
-      <h1 className="display-4">{title}</h1>
-      <p className="lead">{subtitle}</p>
-      <hr className="my-2" />
-      <Button
-        color="primary"
-        className="mt-3"
-        onClick={() => navigate(`${buttonLink}`)}
-      >
-        {buttonText}
-      </Button>
+      <Row className="align-items-center">
+
+        <Col xs={12} md={10} className="text-center text-md-left">
+          <h3 className="display-4">{title}</h3>
+          {/* <hr className="my-2" /> */}
+          <small className="lead">{subtitle}</small>
+        </Col>
+      </Row>
     </Container>
   );
 };
 
 // Prop types for validation
-LandingPageContent.propTypes = {
+Banner.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  buttonText: PropTypes.string,
-  buttonLink: PropTypes.string,
   backgroundColor: PropTypes.string,
   textColor: PropTypes.string,
 };
 
-export default LandingPageContent;
+export default Banner;

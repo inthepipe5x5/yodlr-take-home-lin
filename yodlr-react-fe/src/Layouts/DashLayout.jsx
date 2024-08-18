@@ -16,27 +16,51 @@ import PropTypes from "prop-types";
 import { Container, Row, Col } from "reactstrap";
 import NavBar from "../Components/NavBar";
 import LandingPageContent from "../Components/LandingPageContent";
+import Banner from "../Components/Banner";
+import Footer from "../Components/Footer";
 
-const DashLayout = ({ children }) => {
+const DashLayout = ({ header, sidebar, content, footer }) => {
   return (
-    <div>
-      <NavBar />
-      <Container fluid>
-        <Row>
-          {/* <Col xs="2" md="2" lg="2"> */}
-          {/* </Col> */}
-          <Col className="px-4" xs="12" md="12" lg="12">
-
-            {children}
-          </Col>
-        </Row>
+    <>
+      <aside className="layout-sidebar">
+        {sidebar || <NavBar vertical={true}></NavBar>}
+      </aside>
+      <Container className="layout-container">
+        <header className="layout-header">{header || <Banner></Banner>}</header>
+        <main className="layout-content">
+          {content || <LandingPageContent />}
+        </main>
       </Container>
-    </div>
+      <footer className="layout-footer">{footer || <Footer></Footer>}</footer>
+    </>
   );
 };
+// const DashLayout = ({ children }) => {
+// return (
+//   <div>
+//     <NavBar />
+//     <Container fluid>
+//       <Row>
+//         {/* <Col xs="2" md="2" lg="2"> */}
+//         {/* </Col> */}
+//         <Col className="px-4" xs="12" md="12" lg="12">
 
+//           {children}
+//         </Col>
+//       </Row>
+//     </Container>
+//   </div>
+// );
+// };
+
+// DashLayout.propTypes = {
+//   children: PropTypes.elementType,
+// };
 DashLayout.propTypes = {
-  children: PropTypes.elementType,
+  header: PropTypes.elementType,
+  sidebar: PropTypes.elementType,
+  content: PropTypes.elementType,
+  footer: PropTypes.elementType,
 };
 
 export default DashLayout;
