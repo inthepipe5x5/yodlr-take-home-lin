@@ -13,49 +13,23 @@
 
 import React, { createElement } from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col } from "reactstrap";
-import NavBar from "../Components/NavBar";
+import { Container} from "reactstrap";
 import LandingPageContent from "../Components/LandingPageContent";
 import Banner from "../Components/Banner";
-import Footer from "../Components/Footer";
 
-const DashLayout = ({ header, sidebar, content, footer }) => {
+const DashLayout = ({ header, content, footer }) => {
   return (
     <>
-      <aside className="layout-sidebar">
-        {sidebar || <NavBar vertical={true}></NavBar>}
-      </aside>
-      <Container className="layout-container">
+      <Container className="layout-content-container">
         <header className="layout-header">{header || <Banner></Banner>}</header>
         <main className="layout-content">
           {content || <LandingPageContent />}
         </main>
       </Container>
-      <footer className="layout-footer">{footer || <Footer></Footer>}</footer>
     </>
   );
 };
-// const DashLayout = ({ children }) => {
-// return (
-//   <div>
-//     <NavBar />
-//     <Container fluid>
-//       <Row>
-//         {/* <Col xs="2" md="2" lg="2"> */}
-//         {/* </Col> */}
-//         <Col className="px-4" xs="12" md="12" lg="12">
 
-//           {children}
-//         </Col>
-//       </Row>
-//     </Container>
-//   </div>
-// );
-// };
-
-// DashLayout.propTypes = {
-//   children: PropTypes.elementType,
-// };
 DashLayout.propTypes = {
   header: PropTypes.elementType,
   sidebar: PropTypes.elementType,

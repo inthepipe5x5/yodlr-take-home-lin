@@ -1,6 +1,7 @@
 // Footer.js
 import React from "react";
 import { Navbar, Nav, NavItem } from "reactstrap";
+import { Link } from "react-router-dom";
 import BackButton from "./BackButton";
 import ForwardButton from "./ForwardButton";
 
@@ -26,7 +27,7 @@ const Footer = () => {
       
       {/* Right-aligned copyright notice */}
       <Nav className="ml-auto" navbar>
-        <NavItem>{`Yodlr© ${getCurrentYear()}`}</NavItem>
+        <NavItem tag={Link} to="/">{`Yodlr© ${getCurrentYear()}`}</NavItem>
       </Nav>
     </Navbar>
   );

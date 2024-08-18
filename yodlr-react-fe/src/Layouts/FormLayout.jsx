@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "reactstrap";
 import LoginForm from "../Components/LoginForm";
-import NavBar from "../Components/NavBar";
-
+import Banner from "../Components/Banner";
 /*
 Container: Wraps the entire layout to provide consistent padding and alignment.
 Row and Col: Use Row and Col to center the form on the page. 
@@ -12,24 +11,25 @@ Form Prop: The form prop is expected to be a React component that represents the
 
 */
 
-const FormLayout = ({ Form = LoginForm }) => {
+const FormLayout = ({ header, content, footer }) => {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <NavBar></NavBar>
-        </Col>
-        <Col md={{ size: 8, offset: 2 }}>
-          <Form />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container className="layout-content-container">
+        <header className="layout-header">{header || <Banner></Banner>}</header>
+        <main className="layout-content">
+          <Col md={{ size: 10, offset: 2 }} style={{marginLeft: "auto", marginBottom: "10px"}}>{content || <LoginForm />}</Col>
+        </main>
+      </Container>
+    </>
   );
 };
 
 // Prop types
 FormLayout.propTypes = {
-  Form: PropTypes.elementType,
+  header: PropTypes.elementType,
+  sidebar: PropTypes.elementType,
+  content: PropTypes.elementType,
+  footer: PropTypes.elementType,
 };
 
 export default FormLayout;

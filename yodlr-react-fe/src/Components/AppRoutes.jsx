@@ -28,8 +28,26 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<LandingPage content={LandingPageContent} />} />
       <Route path="/admin" element={<AdminPage />} />
-      <Route path="/signup" element={<SignUpForm childForm={SignUpForm} />} />
-      <Route path="/login" element={<FormPage childForm={LoginForm} />} />
+      <Route
+        path="/signup"
+        element={
+          <FormPage
+            bannerTitle="Create User"
+            bannerSubtitle="Submit a new user to the system"
+            childForm={<SignUpForm />}
+          />
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <FormPage
+            bannerTitle="Login User"
+            bannerSubtitle="Login as a pre-existing user to the system"
+            childForm={<LoginForm />}
+          />
+        }
+      />
       <Route
         path="/logout"
         element={
@@ -41,22 +59,19 @@ const AppRoutes = () => {
       />
       <Route
         path="/users/:id/edit"
-        element={
-            <FormPage childForm={EditUserForm} />
-        }
+        element={<FormPage childForm={EditUserForm} />}
       />
       <Route
         path="/users/:id"
         element={
-            <UserCard />
+          <LandingPage
+            bannerTitle={"Modify User"}
+            bannerSubtitle={"Edit, Activate, Delete"}
+            content={<UserCard />}
+          />
         }
       />
-      <Route
-        path="/profile"
-        element={
-            <UserCard />
-        }
-      />
+      <Route path="/profile" element={<UserCard />} />
       <Route path="/NotFound" element={<NotFound />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

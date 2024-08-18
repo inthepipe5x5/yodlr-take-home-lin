@@ -1,12 +1,13 @@
 .footer-navbar {
-    /* width: 100%; */
-    position: fixed;
-    bottom: 0;
-    z-index: 1030; /* Ensure it appears above other content */
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-    padding: 0.5rem 1rem; /* Add some padding for aesthetics */
-    background-color: #343a40; /* Dark color to match the Navbar */
-    color: #ffffff; /* White text color */
-    margin-left: auto;
-  }
+  /* width: 100%; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030; /* Ensure it appears above other content */
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  padding: 0.5rem 1rem;
+  background-color: #343a40; /* Dark color to match the Navbar */
+  color: #ffffff; /* White text color */
+  margin-left: auto;
+}
