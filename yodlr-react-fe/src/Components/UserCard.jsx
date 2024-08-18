@@ -10,36 +10,61 @@ import {
   CardSubtitle,
   Button,
   ListGroup,
-  ListGroupItem,
+  Spinner,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { v4 as uuid } from "uuid";
-import "./UserCard.css";
+import { Link, Navigate, useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import teamworkImg from "../assets/teamwork.png";
 import YodlrApi from "../../../lib/api";
+import "./UserCard.css";
 
-const capitalizeWord = (word) => {
-  const firstLetter = word[0];
+const UserCard = () => {
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  let userId = id;
+  const [userDetails, setUserDetails] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    state: "",
+    id: userId || "",
+  });
+  const { firstName, lastName, email, state } = userDetails;
 
-  const firstLetterCap = firstLetter.toUpperCase();
+  useEffect(() => {
+    const getAllData = async () => {
+      try {
+        const resp = await YodlrApi.getUser(id);
+        const userData = resp.data;
+        console.debug(userData);
+        setUserDetails(userData);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getAllData();
+  }, [id]);
 
-  const remainingLetters = word.slice(1);
-
-  const final = firstLetterCap + remainingLetters;
-  return final;
-};
-
-const UserCard = (user) => {
-  const { id, firstName, lastName, email, status = [] } = user;
+  const toggleUserState = async () => {
+    try {
+      const newState = state === "pending" ? "active" : "pending";
+      userDetails["state"] = newState;
+      const response = await YodlrApi.putUser(id, userDetails);
+      const newUserDetails = response.data;
+      setUserDetails(newUserDetails);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const onButtonClick = (evt, apiCallFunction) => {
     evt.preventDefault();
     apiCallFunction();
   };
-  
+
   return (
-    // <section className="vw-100 vh-100" style={{ backgroundColor: "#f4f5f7" }}>
-    // <Container className="py-5 vh-100">
     <Row className="justify-content-center align-items-center vh-100 vw-100">
       <Col lg="6" className="mb-4 mb-lg-0">
         <Card className="mb-3" style={{ borderRadius: ".5rem" }}>
@@ -59,15 +84,25 @@ const UserCard = (user) => {
                 style={{ width: "80px" }}
               />
               <CardTitle tag="h5" className="mb-2 px-2">
-                {firstName} {lastName}
+                {!loading && firstName && lastName ? (
+                  `${firstName} ${lastName}`
+                ) : (
+                  <Spinner color="light" />
+                )}
               </CardTitle>
               <CardSubtitle className="mb-2 text-muted">
-                {/* {status ? "Admin 🔐" : "User ✔"} */}
-                {status === "active" ? "Active ✔" : "Pending ⏳"}
+                {state === "active" ? "Active ✔" : "Pending ⏳"} User
               </CardSubtitle>
-              <Button color="warning" tag={Link} to={`/users/${id}/edit`}>
-                Edit Profile
-              </Button>
+
+              {state && state === "active" ? (
+                <Button color="warning" onClick={toggleUserState}>
+                  Deactivate User
+                </Button>
+              ) : (
+                <Button color="success" onClick={toggleUserState}>
+                  Activate User
+                </Button>
+              )}
             </Col>
             <Col md="8">
               <CardBody className="p-4">
@@ -76,11 +111,19 @@ const UserCard = (user) => {
                 <Row className="pt-1">
                   <Col size="6" className="mb-3">
                     <CardTitle tag="h6">Email</CardTitle>
-                    <CardText className="text-muted">{email}</CardText>
+                    <CardText tag={"span"} className="text-muted">
+                      {!loading && email ? (
+                        <p>{email}</p>
+                      ) : (
+                        <Spinner color="light" />
+                      )}
+                    </CardText>
                   </Col>
                   <Col size="6" className="mb-3">
                     <CardTitle tag="h6">id</CardTitle>
-                    <CardText className="text-muted">{id}</CardText>
+                    <CardText tag={"span"} className="text-muted">
+                      {!loading && id ? <p>{id}</p> : <Spinner color="light" />}
+                    </CardText>
                   </Col>
                 </Row>
                 <CardTitle tag="h6">User Actions</CardTitle>
@@ -88,12 +131,17 @@ const UserCard = (user) => {
                 <ListGroup className="pt-1">
                   <Button
                     color="danger"
-                    onClick={onButtonClick(YodlrApi.deleteUser(id))}
+                    onClick={(evt) =>
+                      onButtonClick(evt, async () => {
+                        await YodlrApi.deleteUser(id);
+                        Navigate("/admin");
+                      })
+                    }
                   >
-                    Delete this user
+                    Delete User
                   </Button>
-                  <Button color="warning" tag={Link} to={`/users/${id}/edit`}>
-                    Edit this user
+                  <Button color="info" tag={Link} to={`/users/${id}/edit`}>
+                    Edit User
                   </Button>
                 </ListGroup>
               </CardBody>
@@ -102,8 +150,6 @@ const UserCard = (user) => {
         </Card>
       </Col>
     </Row>
-    // </Container>
-    // </section>
   );
 };
 

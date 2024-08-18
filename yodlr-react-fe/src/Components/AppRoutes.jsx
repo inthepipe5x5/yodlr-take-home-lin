@@ -40,27 +40,21 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/users/:username/edit"
+        path="/users/:id/edit"
         element={
-          // <ProtectedRoute>
             <FormPage childAuthForm={EditUserForm} />
-          // </ProtectedRoute>
         }
       />
       <Route
-        path="/users/:username"
+        path="/users/:id"
         element={
-          // <ProtectedRoute>
             <UserCard />
-          // </ProtectedRoute>
         }
       />
       <Route
         path="/profile"
         element={
-          <ProtectedRoute>
             <UserCard />
-          </ProtectedRoute>
         }
       />
       <Route path="/NotFound" element={<NotFound />} />

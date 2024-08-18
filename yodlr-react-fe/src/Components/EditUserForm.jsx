@@ -2,8 +2,10 @@
 import React, { createElement, useEffect, useState } from "react";
 import YodlrApi from "../../../lib/api";
 import LoginForm from "./LoginForm";
+import { useParams } from "react-router";
 
-const EditUserForm = ({ id }) => {
+const EditUserForm = () => {
+  const { id } = useParams();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
