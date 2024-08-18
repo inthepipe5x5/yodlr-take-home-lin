@@ -10,7 +10,7 @@ import LoginForm from "../Components/LoginForm";
  * @param {React.ComponentType} childForm - FormComponent that will be nested within the Layout Component
  */
 const FormPage = ({ childForm = LoginForm, Layout = FormLayout }) => {
-  return <Layout>{createElement(childForm)}</Layout>;
+  return <Layout Form={childForm} />;
 };
 
 FormPage.propTypes = {

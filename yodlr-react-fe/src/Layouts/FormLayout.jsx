@@ -12,7 +12,7 @@ Form Prop: The form prop is expected to be a React component that represents the
 
 */
 
-const FormLayout = ({ Form }) => {
+const FormLayout = ({ Form = LoginForm }) => {
   return (
     <Container>
       <Row>
@@ -30,11 +30,6 @@ const FormLayout = ({ Form }) => {
 // Prop types
 FormLayout.propTypes = {
   Form: PropTypes.elementType,
-};
-
-// Default props
-FormLayout.defaultProps = {
-  Form: LoginForm,
 };
 
 export default FormLayout;

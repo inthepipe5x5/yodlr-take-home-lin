@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // LandingPage.jsx
 import React, { createElement } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import DashLayout from "../Layouts/DashLayout";
 import LandingPageContent from "../Components/LandingPageContent";
 
@@ -15,8 +15,8 @@ const LandingPage = ({ Content = LandingPageContent, Layout = DashLayout }) => {
 };
 
 LandingPage.propTypes = {
-  Content: propTypes.elementType,
-  Layout: propTypes.elementType
+  Content: PropTypes.elementType,
+  Layout: PropTypes.elementType
 }
 
 export default LandingPage;

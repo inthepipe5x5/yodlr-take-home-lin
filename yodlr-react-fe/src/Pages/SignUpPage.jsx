@@ -9,25 +9,14 @@ Modular sign up page for /signup
 - Takes Form -> React Form component
 */
 
-const SignUpPage = ({ Layout, Form }) => {
-  return (
-    <Layout Form={Form}>
-      <h3>Sign Up!</h3>
-      <hr></hr>
-    </Layout>
-  );
-};
+const SignUpPage = ({ Layout = FormLayout, Form = SignUpForm }) => {
+    return <Layout Form={Form} />;
+  };
 
 // Prop types
 SignUpPage.propTypes = {
   Layout: PropTypes.elementType,
   Form: PropTypes.elementType,
-};
-
-// Default props
-SignUpPage.defaultProps = {
-  Layout: FormLayout,
-  Form: SignUpForm,
 };
 
 export default SignUpPage;

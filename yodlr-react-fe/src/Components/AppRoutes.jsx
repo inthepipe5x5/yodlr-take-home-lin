@@ -50,9 +50,9 @@ const AppRoutes = () => {
       <Route
         path="/users/:username"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <UserCard />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         }
       />
       <Route

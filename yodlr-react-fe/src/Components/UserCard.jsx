@@ -19,7 +19,7 @@ import teamworkImg from "../assets/teamwork.png";
 import YodlrApi from "../../../lib/api";
 
 const capitalizeWord = (word) => {
-  const firstLetter = word.charAt(0);
+  const firstLetter = word[0];
 
   const firstLetterCap = firstLetter.toUpperCase();
 
@@ -36,6 +36,7 @@ const UserCard = (user) => {
     evt.preventDefault();
     apiCallFunction();
   };
+  
   return (
     // <section className="vw-100 vh-100" style={{ backgroundColor: "#f4f5f7" }}>
     // <Container className="py-5 vh-100">
@@ -58,7 +59,7 @@ const UserCard = (user) => {
                 style={{ width: "80px" }}
               />
               <CardTitle tag="h5" className="mb-2 px-2">
-                {capitalizeWord(firstName)} {capitalizeWord(lastName)}
+                {firstName} {lastName}
               </CardTitle>
               <CardSubtitle className="mb-2 text-muted">
                 {/* {status ? "Admin 🔐" : "User ✔"} */}

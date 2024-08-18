@@ -11,9 +11,10 @@ const AdminPage = () => {
     const getAllData = async () => {
       try {
         //make axios request to api for all users
-        const resp = await YodlrApi.request("/users");
+        const resp = await YodlrApi.request("users");
         const usersListData = resp.data;
-        setUsers(usersListData)
+        console.debug("/users API data =>", usersListData)
+        setUsers(usersListData);
       } catch (error) {
         console.error(error);
       } finally {
@@ -23,10 +24,9 @@ const AdminPage = () => {
     getAllData();
   }, []);
 
-
   return (
     <DashLayout>
-      <TableList content={users}/>
+      <TableList content={users} className="mt-60px px-lg-4 py-lg-2"/>
     </DashLayout>
   );
 };

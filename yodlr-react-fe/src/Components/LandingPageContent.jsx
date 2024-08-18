@@ -14,7 +14,7 @@ const LandingPageContent = () => {
       className="text-center py-5"
       style={{ backgroundColor: "#f0f0f0" }}
     >
-      <h1 className="text-dark">Welcome to the Yodlr Website!</h1>
+      <h1 className="text-dark">Welcome Yodlr Admin!</h1>
       <p className="text-muted fs-5">
         We are delighted to have you here, User Admin. Click the button below to start managing your users.
       </p>

@@ -17,26 +17,26 @@ import { Container, Row, Col } from "reactstrap";
 import NavBar from "../Components/NavBar";
 import LandingPageContent from "../Components/LandingPageContent";
 
-const DashLayout = ({ Content = LandingPageContent }) => {
+const DashLayout = ({ children }) => {
   return (
-    <Container fluid>
-      <Row>
-        <Col xs="2" md="2" lg="2">
-          <NavBar />
-        </Col>
-        <Col xs="10" md="10" lg="10">
-          {
-            //render the content
-            createElement(Content)
-          }
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <NavBar />
+      <Container fluid>
+        <Row>
+          {/* <Col xs="2" md="2" lg="2"> */}
+          {/* </Col> */}
+          <Col className="px-4" xs="12" md="12" lg="12">
+
+            {children}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
 DashLayout.propTypes = {
-  Content: PropTypes.elementType,
+  children: PropTypes.elementType,
 };
 
 export default DashLayout;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Table } from "reactstrap";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { uniqueId } from "lodash";
+import { Link, useNavigate } from "react-router-dom";
+// import { uniqueId } from "lodash";
 /*
 This component will render a table listing the users with their details.
 
@@ -14,9 +14,10 @@ Mapping Content: The content array is mapped to generate table rows (<tr>) for e
 PropTypes: The propTypes property is used to define the expected shape of the content prop, ensuring that each user object contains the specified fields.
 */
 
-const TableList = ({ content }) => {
+const TableList = ({ content: users }) => {
+  const navigate = useNavigate();
   return (
-    <Table hover>
+    <Table className="mt-30px" hover>
       <thead>
         <tr>
           <th>ID</th>
@@ -28,22 +29,20 @@ const TableList = ({ content }) => {
         </tr>
       </thead>
       <tbody>
-        {content.map((user) => (
-          <Link key={uniqueId()} to={`/users/${user.id}`}>
-            <tr
-              key={user.id}
-              className={
-                user.state === "pending" ? "row-secondary" : "row-success"
-              }
-            >
-              <td>{user.id}</td>
-              {/* <td>{user.username}</td> */}
-              <td>{user.email}</td>
-              <td>{user.firstname}</td>
-              <td>{user.lastname}</td>
-              <td>{user.state}</td>
-            </tr>
-          </Link>
+        {users.map((user) => (
+          <tr
+            key={user.id}
+            className={
+              user.state === "pending" ? "row-secondary" : "row-success"
+            }
+            onClick={() => navigate(`/users/${user.id}`)} // Use useNavigate hook to navigate user to user, id
+          >
+            <td>{user.id}</td>
+            <td>{user.email}</td>
+            <td>{user.firstName}</td>
+            <td>{user.lastName}</td>
+            <td>{user.state}</td>
+          </tr>
         ))}
       </tbody>
     </Table>
@@ -56,8 +55,8 @@ TableList.propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       //   username: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      firstname: PropTypes.string.isRequired,
-      lastname: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
       state: PropTypes.oneOf(["pending", "active"]).isRequired,
     })
   ).isRequired,
