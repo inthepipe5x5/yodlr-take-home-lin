@@ -61,7 +61,7 @@ const SignUpForm = () => {
         />
       </FormGroup>
 
-      <FormGroup floating>
+      {/* <FormGroup floating>
         <Label for="Password">Password</Label>
         <Input
           type="password"
@@ -71,7 +71,7 @@ const SignUpForm = () => {
           value={inputData.password}
           onChange={handleInput}
         />
-      </FormGroup>
+      </FormGroup> */}
       <Button type="submit" onClick={handleSubmit}>
         Submit
       </Button>

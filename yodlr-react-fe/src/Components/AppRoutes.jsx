@@ -42,7 +42,7 @@ const AppRoutes = () => {
       <Route
         path="/users/:id/edit"
         element={
-            <FormPage childAuthForm={EditUserForm} />
+            <FormPage childForm={EditUserForm} />
         }
       />
       <Route
