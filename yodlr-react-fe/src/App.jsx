@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import AppRoutes from "./Components/AppRoutes";
 import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";

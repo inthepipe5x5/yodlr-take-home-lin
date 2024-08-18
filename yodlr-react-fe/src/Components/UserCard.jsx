@@ -12,7 +12,7 @@ import {
   ListGroup,
   Spinner,
 } from "reactstrap";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import teamworkImg from "../assets/teamwork.png";
 import YodlrApi from "../../../lib/api";
@@ -30,6 +30,7 @@ const UserCard = () => {
     id: userId || "",
   });
   const { firstName, lastName, email, state } = userDetails;
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getAllData = async () => {
@@ -134,7 +135,7 @@ const UserCard = () => {
                     onClick={(evt) =>
                       onButtonClick(evt, async () => {
                         await YodlrApi.deleteUser(id);
-                        Navigate("/admin");
+                        navigate("/admin");
                       })
                     }
                   >

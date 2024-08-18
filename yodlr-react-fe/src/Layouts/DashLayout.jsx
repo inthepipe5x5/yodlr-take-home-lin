@@ -20,7 +20,7 @@ import Banner from "../Components/Banner";
 const DashLayout = ({ header, content, footer }) => {
   return (
     <>
-      <Container className="layout-content-container">
+      <Container className="layout-content-container mt-60">
         <header className="layout-header">{header || <Banner></Banner>}</header>
         <main className="layout-content">
           {content || <LandingPageContent />}
