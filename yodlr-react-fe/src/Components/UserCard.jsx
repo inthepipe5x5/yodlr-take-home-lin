@@ -37,7 +37,6 @@ const UserCard = () => {
       try {
         const resp = await YodlrApi.getUser(id);
         const userData = resp.data;
-        console.debug(userData);
         if (resp.status !== 200) {
           navigate("/NotFound");
         } else {

@@ -17,7 +17,6 @@ const AdminPage = ({ alerts = null, bannerTitle, bannerSubtitle }) => {
         //make axios request to api for all users
         const resp = await YodlrApi.request("users");
         const usersListData = resp.data;
-        console.debug("/users API data =>", usersListData);
         setUsers(usersListData);
       } catch (error) {
         console.error(error);
