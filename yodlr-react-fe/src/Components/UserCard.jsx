@@ -50,7 +50,7 @@ const UserCard = () => {
       }
     };
     getAllData();
-  }, [id]);
+  }, [navigate, id]);
 
   const toggleUserState = async () => {
     try {
