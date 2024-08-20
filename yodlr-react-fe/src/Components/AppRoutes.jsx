@@ -26,7 +26,7 @@ AppRoutes => React Routes component to make this an SPA
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage content={LandingPageContent} />} />
+      <Route path="/" element={<LandingPage content={<LandingPageContent />} />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route
         path="/signup"
