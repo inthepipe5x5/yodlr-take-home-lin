@@ -13,19 +13,17 @@
 
 import React, { createElement } from "react";
 import PropTypes from "prop-types";
-import { Container} from "reactstrap";
+import { Container } from "reactstrap";
 import LandingPageContent from "../Components/LandingPageContent";
 import Banner from "../Components/Banner";
 
 const DashLayout = ({ header, content, footer }) => {
   return (
     <>
-      <Container className="layout-content-container mt-60">
-        <header className="layout-header">{header || <Banner></Banner>}</header>
-        <main className="layout-content">
-          {content || <LandingPageContent />}
-        </main>
-      </Container>
+      <header className="layout-header">{header || <Banner></Banner>}</header>
+      <main className="layout-content">
+        {content || <LandingPageContent />}
+      </main>
     </>
   );
 };

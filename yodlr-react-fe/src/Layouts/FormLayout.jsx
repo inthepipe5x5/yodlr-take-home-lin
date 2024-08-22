@@ -14,12 +14,29 @@ Form Prop: The form prop is expected to be a React component that represents the
 const FormLayout = ({ header, content, footer }) => {
   return (
     <>
-      <Container className="layout-content-container mt-60">
+      <div
+        // className="layout-content-container mt-60"
+        style={{
+          paddingRight: "0",
+          paddingLeft: "0",
+        }}
+      >
         <header className="layout-header">{header || <Banner></Banner>}</header>
         <main className="layout-content">
-          <Col md={{ size: 8, offset: 2 }} style={{marginLeft: "auto", marginBottom: "10px"}}>{content || <LoginForm />}</Col>
+          <Col
+            md={{ size: 8, offset: 2 }}
+            style={{ //these styles control the form component CSS layout & spacing
+              marginTop: "3%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginBottom: "10px",
+              width: "80%"
+            }}
+          >
+            {content || <LoginForm />}
+          </Col>
         </main>
-      </Container>
+      </div>
     </>
   );
 };

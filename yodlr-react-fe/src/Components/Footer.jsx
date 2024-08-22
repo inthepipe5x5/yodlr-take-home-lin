@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import BackButton from "./BackButton";
 import ForwardButton from "./ForwardButton";
+import "./Footer.css"
 
 const getCurrentYear = () => {
   const currentDate = new Date();

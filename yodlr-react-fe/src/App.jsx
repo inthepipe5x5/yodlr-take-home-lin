@@ -15,14 +15,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar></NavBar>
+        {/* <NavBar></NavBar> */}
         <ErrorBoundary
           FallbackComponent={ErrorContentCard}
           onError={logErrorToConsole}
         >
           <AppRoutes />
         </ErrorBoundary>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </BrowserRouter>
     </>
   );

@@ -6,6 +6,7 @@ import { Alert } from "reactstrap";
 import FormLayout from "../Layouts/FormLayout";
 import LoginForm from "../Components/LoginForm";
 import Banner from "../Components/Banner";
+import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 
 /**
@@ -23,7 +24,16 @@ const FormPage = ({
   const [alert, setAlerts] = useState(alerts);
 
   return (
-    <>
+    <div
+      style={{
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+      id="form-page-div"
+    >
+      <NavBar />
       <div className="alerts">
         {alert !== undefined && alert !== null ? (
           <Alert color={alert.color}>{alert.message}</Alert>
@@ -31,12 +41,21 @@ const FormPage = ({
           ""
         )}
       </div>
-      <FormLayout
-        header={<Banner title={bannerTitle} subtitle={bannerSubtitle}></Banner>}
-        // footer={<Footer></Footer>}
-        content={childForm}
-      />
-    </>
+      <div
+        id="form-page-content-div"
+        // className="layout-content-container mt-60"
+        style={{ position: "relative", top: "150px", width: "80%" }}
+      >
+        <FormLayout
+          header={
+            <Banner title={bannerTitle} subtitle={bannerSubtitle}></Banner>
+          }
+          // footer={<Footer></Footer>}
+          content={childForm}
+        />
+      </div>
+      <Footer />
+    </div>
   );
 };
 

@@ -20,6 +20,8 @@ const Banner = ({
     color: textColor,
     padding: "2rem",
     borderRadius: "0.5rem",
+    position: "relative",
+    top: "0", 
   };
 
   return (
