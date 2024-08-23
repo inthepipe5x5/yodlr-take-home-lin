@@ -22,7 +22,10 @@ const DashLayout = ({ header, content, footer }) => {
     <>
       <header className="layout-header">{header || <Banner></Banner>}</header>
       <main className="layout-content">
-        {content || <LandingPageContent />}
+        <div id="main-content" 
+        >
+          {content || <LandingPageContent />}
+        </div>
       </main>
     </>
   );

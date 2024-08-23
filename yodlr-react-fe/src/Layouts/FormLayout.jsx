@@ -25,15 +25,18 @@ const FormLayout = ({ header, content, footer }) => {
         <main className="layout-content">
           <Col
             md={{ size: 8, offset: 2 }}
-            style={{ //these styles control the form component CSS layout & spacing
-              marginTop: "3%",
+            style={{
+              //these styles control the form component CSS layout & spacing
+              marginTop: "10px",
               marginLeft: "auto",
               marginRight: "auto",
               marginBottom: "10px",
-              width: "80%"
+              width: "80%",
+              paddingTop: "2px",
+              paddingBottom: "2px",
             }}
           >
-            {content || <LoginForm />}
+            <div id="form-content" style={{ maxWidth: "75vw" }}>{content || <LoginForm />}</div>
           </Col>
         </main>
       </div>
